@@ -1,0 +1,97 @@
+[package]
+name = "tari_fuzz"
+version = "0.0.0"
+publish = false
+edition = "2021"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+arbitrary = { version = "1", optional = true, features = ["derive"] }
+#tari_core = { git = "https://github.com/tari-project/tari.git", rev = "c5ed816c80eae43348593e636e4b56da98d8af6b" }
+#monero = { package = "monero", version = "=0.18.2", features = ["serde-crate"]}
+monero = { git = "https://github.com/hansieodendaal/monero-rs.git", rev = "2b66e620e09345ebce0c24922d2416e3c4204eed", features = ["serde-crate"]}
+
+[dependencies.tari_fuzz_lib]
+path = ".."
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[profile.release]
+debug = 1
+
+#[[bin]]
+#name = "randomx"
+#path = "fuzz_targets/randomx.rs"
+#test = false
+#doc = false
+
+[[bin]]
+name = "monero_block_d"
+path = "fuzz_targets/monero_block_d.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_header_d"
+path = "fuzz_targets/monero_header_d.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_transaction_d"
+path = "fuzz_targets/monero_transaction_d.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_transaction_sd"
+path = "fuzz_targets/monero_transaction_sd.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_transaction_prefix_d"
+path = "fuzz_targets/monero_transaction_prefix_d.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_hash_convert"
+path = "fuzz_targets/monero_hash_convert.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_raw_extra_field_from"
+path = "fuzz_targets/monero_raw_extra_field_from.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_raw_extra_field_d"
+path = "fuzz_targets/monero_raw_extra_field_d.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_extra_field_p"
+path = "fuzz_targets/monero_extra_field_p.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_transaction_hash"
+path = "fuzz_targets/monero_transaction_hash.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "monero_transaction_check_outputs"
+path = "fuzz_targets/monero_transaction_check_outputs.rs"
+test = false
+doc = false

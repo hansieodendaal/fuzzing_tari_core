@@ -1,0 +1,16 @@
+[package]
+name = "tari_fuzz_lib"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+#tari_core = { git = "https://github.com/tari-project/tari.git", rev = "c5ed816c80eae43348593e636e4b56da98d8af6b" }
+#monero = { version = "=0.18.2", features = ["serde-crate"]}
+monero = { git = "https://github.com/hansieodendaal/monero-rs.git", rev = "2b66e620e09345ebce0c24922d2416e3c4204eed", features = ["serde-crate"]}
+hex-literal = "0.3.1"
+hex = "0.4.3"
+
+[dev-dependencies]
+rand = "0.8"
